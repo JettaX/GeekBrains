@@ -2,7 +2,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println(isAmountWithin(5, 10));
         printPositiveOrNegative(-1);
-        System.out.println(isPositive(-1));
+        System.out.println(isNegative(-1));
         printStringNTimes("GeekBrains", 3);
         System.out.println(isLeapYear(2060));
     }
@@ -16,8 +16,8 @@ public class Main {
         System.out.println(number >= 0 ? "положительное" : "отрицательное");
     }
 
-    public static boolean isPositive(int number) {
-        return number >= 0;
+    public static boolean isNegative(int number) {
+        return number < 0;
     }
 
     public static void printStringNTimes(String string, int times) {
