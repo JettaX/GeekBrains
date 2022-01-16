@@ -37,6 +37,8 @@ public class Main {
 
         System.out.println("Exercise 8***");
         System.out.println(Arrays.toString(arrayShiftByN(new int[]{1, 2, 3}, 1)));
+        System.out.println(Arrays.toString(arrayShiftByN(new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}, 2)));
+        System.out.println(Arrays.toString(arrayShiftByN(new int[]{1, 2, 3}, -1)));
         System.out.println(Arrays.toString(arrayShiftByN(new int[]{3, 5, 6, 1}, -2)));
         System.out.println("________________________");
     }
@@ -133,38 +135,54 @@ public class Main {
     }
 
     private static int[] arrayShiftByN(int[] array, int n) {
-        for (int j = 0; j < (n < 0 ? (-n - n + n) : n); j++) {
-            int shift = 0;
-            if (n > 0) {
-                for (int k = 0; k < array.length; k++) {
-                    if (k == array.length - 1) {
-                        array[0] = shift;
-                    } else if (k == 0) {
-                        shift = array[k + 1];
-                        array[k + 1] = array[k];
-                    } else {
-                        int x = array[k + 1];
-                        array[k + 1] = shift;
-                        shift = x;
-                    }
-                }
+        boolean isLessZero = n < 0;
+        int newNIFLessZero = isLessZero ? (-n - n + n) : n;
+
+        for (int j = 0; j < newNIFLessZero; j++) {
+            if (!isLessZero) {
+                shiftRight(array);
             } else {
-                for (int k = array.length - 1; k >= 0; k--) {
-                    if (k == 0) {
-                        array[array.length - 1] = shift;
-                    } else if (k == array.length - 1) {
-                        int x = array[k - 1];
-                        array[k - 1] = array[k];
-                        shift = x;
-                    } else {
-                        int x = array[k - 1];
-                        array[k - 1] = shift;
-                        shift = x;
-                    }
-                }
+                shiftLeft(array);
             }
         }
         return array;
+    }
+
+    private static void shiftRight(int[] array) {
+        int movable = 0;
+        int memorable;
+
+        for (int pos = 0; pos < array.length; pos++) {
+            if (pos == array.length - 1) {
+                array[0] = movable;
+            } else if (pos == 0) {
+                movable = array[pos + 1];
+                array[pos + 1] = array[pos];
+            } else {
+                memorable = array[pos + 1];
+                array[pos + 1] = movable;
+                movable = memorable;
+            }
+        }
+    }
+
+    private static void shiftLeft(int[] array) {
+        int movable = 0;
+        int memorable;
+
+        for (int pos = array.length - 1; pos >= 0; pos--) {
+            if (pos == 0) {
+                array[array.length - 1] = movable;
+            } else if (pos == array.length - 1) {
+                memorable = array[pos - 1];
+                array[pos - 1] = array[pos];
+                movable = memorable;
+            } else {
+                memorable = array[pos - 1];
+                array[pos - 1] = movable;
+                movable = memorable;
+            }
+        }
     }
 
     public static void printDoubleArrays(int[][] mass) {
