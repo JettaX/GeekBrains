@@ -5,8 +5,8 @@ public class Main {
     static final int MIN_SIZE_FIELD = 3;
     static final int MAX_NUMBER_CHIPS = 5;
     static final int MIN_NUMBER_CHIPS = 3;
-    static final String SIGN_X = "X";
-    static final String SIGN_Y = "Y";
+    static final String HUMAN_SIGHT = "X";
+    static final String AI_SIGHT = "Y";
     static int FIELD_SIZE;
     static int NUMBER_OF_CHIPS;
     static int counterStrokes = 0;
@@ -22,8 +22,8 @@ public class Main {
         printField(field);
 
         while (true) {
-            humanMove(field, scanner, SIGN_X);
-            if (isWin(field, SIGN_X)) {
+            humanMove(field, scanner, HUMAN_SIGHT);
+            if (isWin(field, HUMAN_SIGHT)) {
                 System.out.println("Human is win");
                 startGame();
             }
@@ -31,8 +31,8 @@ public class Main {
                 System.out.println("DRAW");
                 startGame();
             }
-            aIMove(field, SIGN_Y);
-            if (isWin(field, SIGN_Y)) {
+            aIMove(field, AI_SIGHT);
+            if (isWin(field, AI_SIGHT)) {
                 System.out.println("AI is win");
                 startGame();
             }
@@ -89,13 +89,13 @@ public class Main {
         int y;
         do {
             if (!lock) {
-                int[] aiWin = checkAIMove(field, SIGN_Y);
+                int[] aiWin = checkAIMove(field, AI_SIGHT);
                 if (aiWin.length != 0) {
                     x = aiWin[0];
                     y = aiWin[1];
                     break;
                 }
-                int[] humanBlock = checkAIMove(field, SIGN_X);
+                int[] humanBlock = checkAIMove(field, HUMAN_SIGHT);
                 if (humanBlock.length != 0) {
                     x = humanBlock[0];
                     y = humanBlock[1];
