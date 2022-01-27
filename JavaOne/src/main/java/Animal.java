@@ -1,5 +1,5 @@
 public class Animal {
-    String name;
+    private String name;
     static int count = 0;
 
     public Animal(String name) {
@@ -7,11 +7,11 @@ public class Animal {
         count++;
     }
 
+    public Animal() {}
+
     public int getCount() {
         return count;
     }
-
-    public Animal() {}
 
     public void run(int lengthDistance) {
         System.out.println(name + " пробежал " + lengthDistance + " м");

@@ -1,8 +1,9 @@
 public class Cat extends Animal {
+    private String name;
     static int count = 0;
 
     public Cat(String name) {
-        super(name);
+        this.name = name;
         count++;
     }
 

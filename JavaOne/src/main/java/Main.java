@@ -16,9 +16,8 @@ public class Main {
         Stich.run(5000);
         Gus.run(765);
 
-        System.out.println("\nВсего животных " + new Animal().getCount());
-        System.out.print("Из них кошек " + new Dog().getCount());
-        System.out.print(" и собак " + new Cat().getCount());
-        System.out.print(" остальных " + (new Animal().getCount() - new Dog().getCount() - new Cat().getCount()));
+        System.out.print("кошек " + new Dog().getCount());
+        System.out.print(" собак " + new Cat().getCount());
+        System.out.print(" остальных " + (new Animal().getCount()));
     }
 }
