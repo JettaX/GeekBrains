@@ -85,8 +85,6 @@ public class View extends JFrame {
     }
 
     public void generateField(String[][] field, boolean isRemove) {
-        var count = 0;
-        ArrayList<JButton> list = new ArrayList<>();
         if (isRemove) {
             remove(panelForGameField);
         }
@@ -96,15 +94,13 @@ public class View extends JFrame {
 
         for (int i = 0; i < field.length; i++) {
             for (int j = 0; j < field.length; j++) {
-                list.add(new JButton(field[i][j]));
-                var jButton = list.get(count);
+                var jButton = new JButton(field[i][j]);
                 jButton.addActionListener(new FieldButtonsListener(i, j, game));
                 jButton.setBackground(buttonColor);
                 jButton.setPreferredSize(new Dimension(100, 100));
                 jButton.setFont(fontFieldButton);
                 jButton.setForeground(fontColorFieldButtno);
                 panelForGameField.add(jButton);
-                count++;
             }
         }
         add(panelForGameField);
